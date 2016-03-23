@@ -16,10 +16,10 @@ class MyTopo(Topo):
 		lowerSwitch = self.addSwitch('s4')
 
 		#Add links
-		self.addLink(lefthost,upperSwitch)
-		self.addLink(lefthost,lowerSwitch)
-		self.addLink(righthost,upperSwitch)
-		self.addLink(righthost,lowerSwitch)
+		self.addLink(leftHost,upperSwitch)
+		self.addLink(leftHost,lowerSwitch)
+		self.addLink(rightHost,upperSwitch)
+		self.addLink(rightHost,lowerSwitch)
 
 
 topos = {'mytopo':(lambda:MyTopo())}
