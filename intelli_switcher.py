@@ -30,10 +30,22 @@ path2= (match(switch=1) >> fwd(4))\
 	 + (match(switch=2) >> fwd(2))
 
 class myroute(DynamicPolicy):
+	
 
 def byte_counts():
 
 def main():
   return (myroute()  + byte_counts())
 
-
+ def set_initial_state(self):
+    self.query = packets(1,['srcip', 'dstip'])
+    self.query.register_callback(self.myroute)
+    self.forward = self.flood
+    self.update_policy()
+ 
+  def set_network(self,network):
+    self.set_initial_state()
+ 
+  def update_policy(self):
+    self.policy = self.forward + self.query
+ 
